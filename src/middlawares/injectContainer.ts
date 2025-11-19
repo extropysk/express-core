@@ -3,7 +3,9 @@ import { AwilixContainer } from 'awilix'
 
 export const injectContainer = (container: AwilixContainer) => {
   return (req: any, _res: Response, next: NextFunction) => {
-    req.container = container.createScope()
+    req.context = {
+      container: container.createScope(),
+    }
 
     return next()
   }

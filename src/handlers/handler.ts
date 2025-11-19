@@ -5,15 +5,11 @@ import type { Response } from 'express'
 
 import { ZodError } from 'zod'
 import { ApiError } from '@/errors'
-import { AwilixContainer } from 'awilix'
 
 type ParsedQs = Record<string, string>
 
-interface BaseRequest<U> extends PayloadRequest<U> {
-  container: AwilixContainer
-}
-
-export interface Request<B = any, Q extends ParsedQs = ParsedQs, U = any> extends BaseRequest<U> {
+export interface Request<B = any, Q extends ParsedQs = ParsedQs, U = any>
+  extends PayloadRequest<U> {
   body: B
   query: Q
 }
